@@ -1,14 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const connectDatabase = require("./database/databse");
 
 const port = process.env.PORT || 3001;
 const app = express();
 
+connectDatabase();
 app.use(cors());
-
-app.get('/', (req, res) => {
-    res.send({messege: "hello world!"});
-});
 
 app.listen(port, () => {console.log(`Servidor rodando na porta ${port}`)});
